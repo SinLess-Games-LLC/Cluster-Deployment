@@ -1,6 +1,7 @@
 # Trash
 .DS_Store
 Thumbs.db
+
 # k8s
 kubeconfig
 .decrypted~*.yaml
@@ -8,5 +9,10 @@ kubeconfig
 *.agekey
 *.pub
 *.key
+
 # Ansible
 .venv*
+
+#Use Case Specific
+.idea/
+tunnel.json
