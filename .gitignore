@@ -10,3 +10,7 @@ kubeconfig
 *.key
 # Ansible
 .venv*
+
+.idea/
+
+tunnel.json
