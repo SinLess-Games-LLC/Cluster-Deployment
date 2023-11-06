@@ -16,3 +16,4 @@ kubeconfig
 #Use Case Specific
 .idea/
 tunnel.json
+/dash.txt
