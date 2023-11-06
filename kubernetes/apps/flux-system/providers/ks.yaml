@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-flux-system
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/flux-system/providers
+  path: ./kubernetes/apps/flux-system/providers/discord
   prune: true
   sourceRef:
     kind: GitRepository

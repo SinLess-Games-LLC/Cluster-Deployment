@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./addons/ks.yaml
   - ./weave-gitops/ks.yaml
-  - providers/discord/ks.yaml
+  - providers/ks.yaml
