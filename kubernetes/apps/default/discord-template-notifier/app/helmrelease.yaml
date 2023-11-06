@@ -57,7 +57,7 @@ spec:
       config:
         enabled: true
         type: secret
-        name: discord-template-notifier-secret
+        name: discord-notifier-secret
         globalMounts:
           - path: /data/config.toml
             subPath: config.toml
