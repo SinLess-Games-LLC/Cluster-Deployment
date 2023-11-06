@@ -6,6 +6,7 @@ metadata:
 spec:
     type: discord
     channel: kubernetes-cluster-helix
+    username: fluxcd
     secretRef:
         name: discord-notifier-secret
         key: url

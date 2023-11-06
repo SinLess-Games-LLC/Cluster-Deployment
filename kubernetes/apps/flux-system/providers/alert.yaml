@@ -4,12 +4,9 @@ metadata:
   name: discord
   namespace: flux-system
 spec:
-  summary: "Discord notification"
-  eventMetadata:
-    cluster: "*"
+  eventSeverity: info
   providerRef:
       name: discord
-  eventSeverity: info
   eventSources:
     - kind: GitRepository
       name: '*'
