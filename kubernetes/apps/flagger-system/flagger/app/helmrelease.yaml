@@ -31,51 +31,5 @@ spec:
       verify: # verify the chart signature with Cosign keyless
         provider: cosign
   values:
-    podAnnotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "8080"
-      appmesh.k8s.aws/sidecarInjectorWebhook: disabled
-      linkerd.io/inject: enabled
-    metricsServer: "http://10.42.1.75:9090"
     nodeSelector:
       kubernetes.io/os: linux
-    prometheus:
-      install: false
-      image: docker.io/prom/prometheus:v2.41.0
-      pullSecret:
-      retention: 2h
-      # when enabled, it will add a security context for the prometheus pod
-      securityContext:
-        enabled: false
-        context:
-          readOnlyRootFilesystem: true
-          runAsUser: 10001
-    serviceMonitor:
-      enabled: true
-      namespace: monitoring
-      labels:
-        release: prometheus
-    podMonitor:
-      enabled: true
-    leaderElection:
-      enabled: true
-      replicaCount: 4
-      leaseDuration: 15s
-      renewDeadline: 10s
-      retryPeriod: 2s
-    serviceAccount:
-      # serviceAccount.create: Whether to create a service account or not
-      create: true
-      # serviceAccount.name: The name of the service account to create or use
-      name: ""
-      # serviceAccount.annotations: Annotations for service account
-      annotations: { }
-    rbac:
-      # rbac.create: `true` if rbac resources should be created
-      create: true
-      # rbac.pspEnabled: `true` if PodSecurityPolicy resources should be created
-      pspEnabled: false
-    crd:
-      # crd.create: `true` if custom resource definitions should be created
-      create: true
-
