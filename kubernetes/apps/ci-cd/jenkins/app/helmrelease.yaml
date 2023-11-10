@@ -9,6 +9,7 @@ spec:
   chart:
     spec:
       chart: jenkins
+      version: 4.8.2
       sourceRef:
         kind: HelmRepository
         name: jenkins
@@ -41,9 +42,13 @@ spec:
       create: true
       readSecrets: false
 
-
     serviceAccount:
       create: true
+
+    persistence:
+      enabled: true
+      storageClass: local-path
+      size: 10Gi
 
     controller:
       # Used for label app.kubernetes.io/component
@@ -54,16 +59,12 @@ spec:
       agentListenerEnabled: true
       agentListenerPort: 50000
       jenkinsHome: "/var/jenkins_home"
-      workspaceVolume:
-        enabled: true
-        size: 10Gi
-        storageClass: local-path
+
+
 
       ingress:
         enabled: true
         ingressClassName: internal
-        annotations:
-          hajimari.io/enable: "false"
         hosts:
           - host: &host "jenkins.${SECRET_DOMAIN}"
             paths:
