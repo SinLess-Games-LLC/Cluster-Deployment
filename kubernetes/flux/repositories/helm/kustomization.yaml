@@ -11,7 +11,7 @@ resources:
   - ./flagger.yaml
   - ./grafana.yaml
   - ./hajimari.yaml
-  # - ./hashicorp.yaml
+  - ./hashicorp.yaml
   - ./ingress-nginx.yaml
   - ./jetstack.yaml
   - ./k8s-gateway.yaml
