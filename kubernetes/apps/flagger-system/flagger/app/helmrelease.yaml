@@ -27,7 +27,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: flagger
-        namespace: flagger-system
+        namespace: flux-system
       verify: # verify the chart signature with Cosign keyless
         provider: cosign
   values:
