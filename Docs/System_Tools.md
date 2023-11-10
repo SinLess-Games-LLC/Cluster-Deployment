@@ -14,7 +14,7 @@
 
 - [x] 💚[Flux2](https://github.com/fluxcd/flux2) - Flux version 2 is built from the ground up to use Kubernetes' API extension system, and to integrate with Prometheus and other core components of the Kubernetes ecosystem.
 - [ ] 💚[Jenkins](https://www.jenkins.io/) - Jenkins is the leading open-source automation server used by companies such as Facebook, Netflix, and Adobe to implement continuous integration and deployment pipelines.
-- [ ] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
+- [x] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
 
 ## Cluster Resources Management
 
