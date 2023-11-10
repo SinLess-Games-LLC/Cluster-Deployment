@@ -83,4 +83,5 @@ spec:
       enabled: true
       namespace: ci-cd-system
       image: "	jenkins/inbound-agent"
+      workingDir: "/home/jenkins/agent"
 
