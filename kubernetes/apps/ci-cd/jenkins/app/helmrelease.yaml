@@ -45,18 +45,7 @@ spec:
     serviceAccount:
       create: true
 
-    persistence:
-      enabled: true
-      storageClass: local-path
-      size: 10Gi
-      volumes:
-        - name: jenkins-pvc
-          persistentVolumeClaim:
-            claimName: jenkins-pvc
-      mounts:
-        - mountPath: /var/jenkins_home
-          subPath: jenkins_home
-          name: jenkins-pvc
+
 
     controller:
       # Used for label app.kubernetes.io/component
@@ -67,6 +56,18 @@ spec:
       agentListenerEnabled: true
       agentListenerPort: 50000
       jenkinsHome: "/var/jenkins_home"
+      persistence:
+        enabled: true
+        storageClass: local-path
+        size: 10Gi
+        volumes:
+          - name: jenkins-pvc
+            persistentVolumeClaim:
+              claimName: jenkins-pvc
+        mounts:
+          - mountPath: /var/jenkins_home
+            subPath: jenkins_home
+            name: jenkins-pvc
 
       ingress:
         enabled: true
