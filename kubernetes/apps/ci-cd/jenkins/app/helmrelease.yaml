@@ -58,13 +58,7 @@ spec:
         enabled: true
         size: 10Gi
         storageClass: local-path
-        accessMode: ReadWriteOnce
-        mountPath: /var/jenkins_home
-        subPath: jenkins_home
-        volumes:
-          - name: jenkins-home
-            persistentVolumeClaim:
-              claimName: jenkins-home
+
       ingress:
         enabled: true
         ingressClassName: internal
