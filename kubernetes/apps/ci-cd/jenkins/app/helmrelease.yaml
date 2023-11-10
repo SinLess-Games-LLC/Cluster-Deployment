@@ -49,6 +49,10 @@ spec:
       enabled: true
       storageClass: local-path
       size: 10Gi
+      volumes:
+        - name: jenkins-pvc
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
       mounts:
         - mountPath: /var/jenkins_home
           subPath: jenkins_home
