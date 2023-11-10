@@ -47,8 +47,13 @@ spec:
 
     persistence:
       enabled: true
+      existingClaim: jenkins-pvc
       storageClass: local-path
       size: 10Gi
+      mounts:
+        - mountPath: /var/jenkins_home
+          subPath: jenkins_home
+          name: jenkins-pvc
 
     controller:
       # Used for label app.kubernetes.io/component
@@ -59,8 +64,6 @@ spec:
       agentListenerEnabled: true
       agentListenerPort: 50000
       jenkinsHome: "/var/jenkins_home"
-
-
 
       ingress:
         enabled: true
