@@ -5,53 +5,59 @@ metadata:
   name: jenkins
   namespace: ci-cd-system
 spec:
-    interval: 1m
-    chart:
-      spec:
-        chart: jenkins
-        version: 3.6.0
-        sourceRef:
-          kind: HelmRepository
-          name: jenkins
-    maxHistory: 2
-    install:
-      remediation:
-        retries: 3
-    upgrade:
-      cleanupOnFail: true
-      remediation:
-        retries: 3
-    uninstall:
-      keepHistory: false
-    dependsOn:
-      - name: local-path-provisioner
-        namespace: kube-system
-    values:
-      checkDeprecation: true
-      podAnnotations:
-        secret.reloader.stakater.com/reload: cluster-user-auth
-      crds:
-        enabled: true
-      networkPolicy:
-        create: false
-      metrics:
-        enabled: true
-      ## Install Default RBAC roles and bindings
-      rbac:
-        create: true
-        readSecrets: false
-      ingress:
-        enabled: true
-        className: internal
-        annotations:
-          hajimari.io/icon: mdi:kubernetes
-        hosts:
-          - &host "jenkins.${SECRET_DOMAIN}"
-        tls:
-          - hosts:
-              - *host
+  interval: 1m
+  chart:
+    spec:
+      chart: jenkins
+      version: 3.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: jenkins
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: local-path-provisioner
+      namespace: kube-system
+  values:
+    checkDeprecation: true
+    podAnnotations:
+      secret.reloader.stakater.com/reload: cluster-user-auth
+    crds:
+      enabled: true
+    networkPolicy:
+      create: false
+    metrics:
+      enabled: true
+    ## Install Default RBAC roles and bindings
+    rbac:
+      create: true
+      readSecrets: false
+    ingress:
+      enabled: true
+      className: internal
+      annotations:
+        hajimari.io/icon: mdi:kubernetes
+      hosts:
+        - &host "jenkins.${SECRET_DOMAIN}"
+      tls:
+        - hosts:
+             - *host
 
-      controller:
-        # Used for label app.kubernetes.io/component
-        componentName: "jenkins-controller"
-        image: "jenkins/jenkins"
+    controller:
+      # Used for label app.kubernetes.io/component
+      componentName: "jenkins-controller"
+      image: "jenkins/jenkins"
+
+    agent:
+      enabled: true
+      namespace: ci-cd-system
+      image: "	jenkins/inbound-agent"
+
