@@ -10,7 +10,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: helix-kubernetes
-    namespace: flux-system
   wait: false
   interval: 30m
   retryInterval: 1m
