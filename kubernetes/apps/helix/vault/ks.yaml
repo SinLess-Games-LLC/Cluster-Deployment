@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-vault
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/monitoring/vault/app
+  path: ./kubernetes/apps/helix/vault/app
   prune: true
   sourceRef:
     kind: GitRepository
