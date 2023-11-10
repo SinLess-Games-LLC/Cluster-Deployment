@@ -3,7 +3,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: cluster-apps-flagger
-  namespace: flagger-system
+  namespace: flux-system
 spec:
   path: ./kubernetes/apps/flagger-system/flagger/app
   prune: true
