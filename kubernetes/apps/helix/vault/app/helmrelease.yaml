@@ -28,83 +28,25 @@ spec:
     - name: local-path-provisioner
       namespace: kube-system
   values:
-    injector:
+    global:
+      # enabled is the master enabled switch. Setting this to true or false
+      # will enable or disable all the components within this chart by default.
       enabled: true
-      image:
-        repository: "hashicorp/vault-k8s"
-        tag: "latest"
-      resources:
-        requests:
-          memory: 256Mi
-          cpu: 250m
-        limits:
-          memory: 256Mi
-          cpu: 250m
-    server:
-      # Use the Enterprise Image
-      image:
-        repository: "hashicorp/vault-enterprise"
-        tag: "1.15.0-ent"
-
-      # These Resource Limits are in line with node requirements in the
-      # Vault Reference Architecture for a Small Cluster
-      resources:
-        requests:
-          memory: 8Gi
-          cpu: 2000m
-        limits:
-          memory: 16Gi
-          cpu: 2000m
-
-      # For HA configuration and because we need to manually init the vault,
-      # we need to define custom readiness/liveness Probe settings
-      readinessProbe:
-        enabled: true
-        path: "/v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204"
-      livenessProbe:
-        enabled: true
-        path: "/v1/sys/health?standbyok=true"
-        initialDelaySeconds: 60
-
-      # This configures the Vault Statefulset to create a PVC for audit logs.
-      # See https://www.vaultproject.io/docs/audit/index.html to know more
-      auditStorage:
-        enabled: true
-
-      standalone:
-        enabled: false
-
-      # Run Vault in "HA" mode.
-      ha:
-        enabled: true
-        replicas: 5
-        raft:
-          enabled: true
-          setNodeId: true
-          config: |
-              ui = true
-              listener "tcp" {
-              tls_disable = 1
-              address = "[::]:8200"
-              cluster_address = "[::]:8201"
-              }
-              storage "raft" {
-              path = "/vault/data"
-              node_id = "{{ env "POD_NAME" }}"
-              }
-              service_registration "kubernetes" {}
-    ui:
-        enabled: true
-        serviceType: ClusterIP
-        servicePort: 8200
-        ingress:
-          enabled: true
-          ingressClassName: internal
-          annotations:
-            hajimari.io/icon: simple-icons:vault
-          hosts:
-            - &host "vault.${SECRET_DOMAIN}"
-          tls:
-            - hosts:
-                - *host
-
+      # The namespace to deploy to. Defaults to the `helm` installation namespace.
+      namespace: helix
+      # TLS for end-to-end encrypted transport
+      tlsDisable: true
+      # Create PodSecurityPolicy for pods
+      psp:
+        enable: false
+        # Annotation for PodSecurityPolicy.
+        # This is a multi-line templated string map, and can also be set as YAML.
+        annotations: |
+          seccomp.security.alpha.kubernetes.io/allowedProfileNames: docker/default,runtime/default
+          apparmor.security.beta.kubernetes.io/allowedProfileNames: runtime/default
+          seccomp.security.alpha.kubernetes.io/defaultProfileName:  runtime/default
+          apparmor.security.beta.kubernetes.io/defaultProfileName:  runtime/default
+      serverTelemetry:
+        # Enable integration with the Prometheus Operator
+        # See the top level serverTelemetry section below before enabling this feature.
+        prometheusOperator: false
