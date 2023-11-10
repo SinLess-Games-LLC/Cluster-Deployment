@@ -23,6 +23,9 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: local-path-provisioner
+      namespace: kube-system
   values:
     checkDeprecation: true
     podAnnotations:
@@ -38,6 +41,7 @@ spec:
       create: true
       readSecrets: false
 
+
     serviceAccount:
       create: true
 
@@ -49,6 +53,22 @@ spec:
       targetPort: 8080
       agentListenerEnabled: true
       agentListenerPort: 50000
+
+      workspaceVolume:
+        enabled: true
+        size: 10Gi
+        storageClass: local-path
+        accessMode: ReadWriteOnce
+        annotations:
+          volume.beta.kubernetes.io/storage-class: local-path
+          volume.beta.kubernetes.io/storage-provisioner: rancher.io/local-path
+        mountPath: /var/jenkins_home
+        subPath: jenkins_home
+        subPathExpr: ""
+        volumes:
+          - name: jenkins-home
+            persistentVolumeClaim:
+              claimName: jenkins-home
 
       ingress:
         enabled: true
@@ -73,15 +93,34 @@ spec:
           memory: "4096Mi"
 
       jenkinsHome: "/var/jenkins_home"
-      # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
-      # Cloudbees Jenkins Distribution docker, you should set jenkinsRef: "/usr/share/cloudbees-jenkins-distribution/ref"
-      jenkinsRef: "/usr/share/jenkins/ref"
-      # Path to the jenkins war file which is used by jenkins-plugin-cli.
-      jenkinsWar: "/usr/share/jenkins/jenkins.war"
 
     agent:
       enabled: true
       namespace: ci-cd-system
       image: "	jenkins/inbound-agent"
       workingDir: "/home/jenkins/agent"
+      workspaceVolume:
+        enabled: true
+        size: 10Gi
+        storageClass: local-path
+        accessMode: ReadWriteOnce
+        annotations:
+          volume.beta.kubernetes.io/storage-class: local-path
+          volume.beta.kubernetes.io/storage-provisioner: rancher.io/local-path
+        mountPath: /home/jenkins/agent
+        subPath: agent
+        subPathExpr: ""
+        volumes:
+          - name: jenkins-agent
+            persistentVolumeClaim:
+              claimName: jenkins-agent
+      resources:
+        requests:
+          cpu: "512m"
+          memory: "512Mi"
+          # ephemeralStorage:
+        limits:
+          cpu: "512m"
+          memory: "512Mi"
+          # ephemeralStorage:
 
