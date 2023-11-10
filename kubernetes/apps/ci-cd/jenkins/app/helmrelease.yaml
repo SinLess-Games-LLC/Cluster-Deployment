@@ -41,8 +41,16 @@ spec:
     serviceAccount:
       create: true
 
-    ingress:
-      main:
+    controller:
+      # Used for label app.kubernetes.io/component
+      componentName: "jenkins-controller"
+      image: "jenkins/jenkins"
+      servicePort: 8080
+      targetPort: 8080
+      agentListenerEnabled: true
+      agentListenerPort: 50000
+
+      ingress:
         enabled: true
         ingressClassName: internal
         annotations:
@@ -56,15 +64,6 @@ spec:
           - hosts:
               - *host
 
-    controller:
-      # Used for label app.kubernetes.io/component
-      componentName: "jenkins-controller"
-      image: "jenkins/jenkins"
-      servicePort: 8080
-      targetPort: 8080
-      agentListenerEnabled: true
-      agentListenerPort: 50000
-
       resources:
         requests:
           cpu: "50m"
@@ -72,6 +71,13 @@ spec:
         limits:
           cpu: "2000m"
           memory: "4096Mi"
+
+      jenkinsHome: "/var/jenkins_home"
+      # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
+      # Cloudbees Jenkins Distribution docker, you should set jenkinsRef: "/usr/share/cloudbees-jenkins-distribution/ref"
+      jenkinsRef: "/usr/share/jenkins/ref"
+      # Path to the jenkins war file which is used by jenkins-plugin-cli.
+      jenkinsWar: "/usr/share/jenkins/jenkins.war"
 
     agent:
       enabled: true
