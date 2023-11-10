@@ -3,16 +3,17 @@
 
 - [x] 💚[Helm](https://github.com/helm/helm) - Helm is a tool for managing Charts. Charts are packages of pre-configured Kubernetes resources.
 - [x] 💚[Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) - The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters.
+- [X] 💚[Ansible]() - Ansible is an open-source software provisioning, configuration management, and application-deployment tool.
 
 ## Cluster Provisioning
 
 - [x] 💚[k3s](https://github.com/k3s-io/k3s) - Lightweight Kubernetes. Easy to install,Kubernetes clusters from the command line.
-- [x] [Stakater Reloader](https://github.com/stakater/Reloader) - Reloader can watch changes in the file system and trigger a reload of pods.
+- [x] 💚[Stakater Reloader](https://github.com/stakater/Reloader) - Reloader can watch changes in the file system and trigger a reload of pods.
 
 ## Automation and CI/CD
 
 - [x] 💚[Flux2](https://github.com/fluxcd/flux2) - Flux version 2 is built from the ground up to use Kubernetes' API extension system, and to integrate with Prometheus and other core components of the Kubernetes ecosystem.
-- [x] 💚[Jenkins](https://www.jenkins.io/) - Jenkins is the leading open-source automation server used by companies such as Facebook, Netflix, and Adobe to implement continuous integration and deployment pipelines.
+- [ ] 💚[Jenkins](https://www.jenkins.io/) - Jenkins is the leading open-source automation server used by companies such as Facebook, Netflix, and Adobe to implement continuous integration and deployment pipelines.
 - [ ] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
 
 ## Cluster Resources Management
@@ -21,7 +22,7 @@
 
 - [x] 💚[SOPS]() - SOPS is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault and PGP.
 - [ ] 💚[Vault]() - Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets in modern computing.
-- [ ] [vault-secrets-operator]() - An operator to create Kubernetes secrets from Vault for a secure GitOps based workflow
+- [ ] 💚[vault-secrets-operator]() - An operator to create Kubernetes secrets from Vault for a secure GitOps based workflow
 
 ## Networking
 
