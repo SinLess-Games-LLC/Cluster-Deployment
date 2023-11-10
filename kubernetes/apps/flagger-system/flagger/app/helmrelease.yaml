@@ -78,5 +78,5 @@ spec:
       pspEnabled: false
     crd:
       # crd.create: `true` if custom resource definitions should be created
-      create: false
+      create: true
 

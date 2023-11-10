@@ -7,6 +7,7 @@
 ## Cluster Provisioning
 
 - [x] 💚[k3s](https://github.com/k3s-io/k3s) - Lightweight Kubernetes. Easy to install,Kubernetes clusters from the command line.
+- [x] [Stakater Reloader](https://github.com/stakater/Reloader) - Reloader can watch changes in the file system and trigger a reload of pods.
 
 ## Automation and CI/CD
 
