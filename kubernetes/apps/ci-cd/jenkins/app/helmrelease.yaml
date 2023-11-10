@@ -61,7 +61,6 @@ spec:
         accessMode: ReadWriteOnce
         mountPath: /var/jenkins_home
         subPath: jenkins_home
-        subPathExpr: ""
         volumes:
           - name: jenkins-home
             persistentVolumeClaim:
