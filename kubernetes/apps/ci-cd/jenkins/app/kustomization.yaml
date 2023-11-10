@@ -4,4 +4,3 @@ kind: Kustomization
 namespace: ci-cd-system
 resources:
   - ./helmrelease.yaml
-  - ./rabc.yaml
