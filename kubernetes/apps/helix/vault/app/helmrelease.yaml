@@ -50,3 +50,83 @@ spec:
         # Enable integration with the Prometheus Operator
         # See the top level serverTelemetry section below before enabling this feature.
         prometheusOperator: false
+
+    injector:
+      enabled: true
+      # Use the Vault K8s Image https://github.com/hashicorp/vault-k8s/
+      image:
+        repository: "hashicorp/vault-k8s"
+        tag: "latest"
+
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 250m
+          limits:
+            memory: 256Mi
+            cpu: 250m
+
+    server:
+      # Use the Enterprise Image
+      image:
+        repository: "hashicorp/vault-enterprise"
+        tag: "1.15.0-ent"
+
+      # These Resource Limits are in line with node requirements in the
+      # Vault Reference Architecture for a Small Cluster
+      resources:
+        requests:
+          memory: 8Gi
+          cpu: 2000m
+        limits:
+          memory: 16Gi
+          cpu: 2000m
+
+      # For HA configuration and because we need to manually init the vault,
+      # we need to define custom readiness/liveness Probe settings
+      readinessProbe:
+        enabled: true
+        path: "/v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204"
+      livenessProbe:
+        enabled: true
+        path: "/v1/sys/health?standbyok=true"
+        initialDelaySeconds: 60
+
+
+
+      # This configures the Vault Statefulset to create a PVC for audit logs.
+      # See https://www.vaultproject.io/docs/audit/index.html to know more
+      auditStorage:
+        enabled: true
+
+      standalone:
+        enabled: false
+
+      # Run Vault in "HA" mode.
+      ha:
+        enabled: true
+        replicas: 5
+        raft:
+          enabled: true
+          setNodeId: true
+
+    ui:
+      enabled: true
+
+    serviceMonitor:
+      enabled: true
+    ingress:
+      enabled: true
+      ingressClassName: internal
+      annotations:
+        hajimari.io/icon: simple-icons:grafana
+      hosts:
+        - &host "vault.${SECRET_DOMAIN}"
+      tls:
+        - hosts:
+            - *host
+    persistence:
+      enabled: true
+      storageClassName: local-path
+    testFramework:
+      enabled: false
