@@ -104,7 +104,7 @@ spec:
 
     ui:
       enabled: true
-
+      externalPort: 8200
       ingress:
         enabled: true
         ingressClassName: internal
