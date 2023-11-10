@@ -28,57 +28,28 @@ spec:
     - name: local-path-provisioner
       namespace: kube-system
   values:
-    checkDeprecation: true
-    podAnnotations:
-      secret.reloader.stakater.com/reload: cluster-user-auth
-    crds:
-      enabled: true
-    networkPolicy:
-      create: false
-    metrics:
-      enabled: true
-    ## Install Default RBAC roles and bindings
-    rbac:
-      create: true
-      readSecrets: false
-
-    serviceAccount:
-      create: true
-
-    persistence:
-      enabled: true
-      storageClass: local-path
-      size: 10Gi
-      volumes:
-        - name: jenkins-pvc
-          persistentVolumeClaim:
-            claimName: jenkins-pvc
-      mounts:
-        - mountPath: /var/jenkins_home
-          subPath: jenkins_home
-          name: jenkins-pvc
-
     controller:
       # Used for label app.kubernetes.io/component
       componentName: "jenkins-controller"
       image: "jenkins/jenkins"
-      servicePort: 8080
-      targetPort: 8080
-      agentListenerEnabled: true
-      agentListenerPort: 50000
-      jenkinsHome: "/var/jenkins_home"
 
-      ingress:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - host: &host "jenkins.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
+      adminUser: "admin"
+      # adminPassword: <defaults to random>
+      admin:
+        existingSecret: ""
+        userKey: jenkins-admin-user
+        passwordKey: jenkins-admin-password
+      # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
+      # Cloudbees Jenkins Distribution docker, you should set jenkinsHome: "/var/cloudbees-jenkins-distribution"
+      jenkinsHome: "/var/jenkins_home"
+      # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
+      # Cloudbees Jenkins Distribution docker, you should set jenkinsRef: "/usr/share/cloudbees-jenkins-distribution/ref"
+      jenkinsRef: "/usr/share/jenkins/ref"
+      # Path to the jenkins war file which is used by jenkins-plugin-cli.
+      jenkinsWar: "/usr/share/jenkins/jenkins.war"
+      # Overrides the default arguments passed to the war
+      # overrideArgs:
+      #   - --httpPort=8080
       resources:
         requests:
           cpu: "50m"
@@ -87,10 +58,97 @@ spec:
           cpu: "2000m"
           memory: "4096Mi"
 
+
+      # List of plugins to be install during Jenkins controller start
+      installPlugins:
+        - kubernetes:4029.v5712230ccb_f8
+        - workflow-aggregator:596.v8c21c963d92d
+        - git:5.1.0
+        - configuration-as-code:1670.v564dc8b_982d0
+
+      # Set to false to download the minimum required version of all dependencies.
+      installLatestPlugins: true
+
+      # Set to true to download latest dependencies of any plugin that is requested to have the latest version.
+      installLatestSpecifiedPlugins: false
+
+      # List of plugins to install in addition to those listed in controller.installPlugins
+      additionalPlugins: [ ]
+
+
+      # Generate SecretClaim resources in order to create Kubernetes secrets from HashiCorp Vault using kube-vault-controller.
+      # 'name' is name of the secret that will be created in Kubernetes. The Jenkins fullname is prepended to this value.
+      # 'path' is the fully qualified path to the secret in Vault
+      # 'type' is an optional Kubernetes secret type. Defaults to 'Opaque'
+      # 'renew' is an optional secret renewal time in seconds
+      secretClaims: [ ]
+      # - name: secretName        # required
+      #   path: testPath          # required
+      #   type: kubernetes.io/tls # optional
+      #   renew: 60               # optional
+
+      # Name of default cloud configuration.
+      cloudName: "kubernetes"
+
+      # Below is the implementation of Jenkins Configuration as Code.  Add a key under configScripts for each configuration area,
+      # where each corresponds to a plugin or section of the UI.  Each key (prior to | character) is just a label, and can be any value.
+      # Keys are only used to give the section a meaningful name.  The only restriction is they may only contain RFC 1123 \ DNS label
+      # characters: lowercase letters, numbers, and hyphens.  The keys become the name of a configuration yaml file on the controller in
+      # /var/jenkins_home/casc_configs (by default) and will be processed by the Configuration as Code Plugin.  The lines after each |
+      # become the content of the configuration yaml file.  The first line after this is a JCasC root element, eg jenkins, credentials,
+      # etc.  Best reference is https://<jenkins_url>/configuration-as-code/reference.  The example below creates a welcome message:
+      JCasC:
+        defaultConfig: true
+        configUrls: [ ]
+        # - https://acme.org/jenkins.yaml
+        # Remote URL:s for configuration files.
+        configScripts: { }
+        #  welcome-message: |
+        #    jenkins:
+        #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
+        # Allows adding to the top-level security JCasC section. For legacy,  default the chart includes apiToken configurations
+        security:
+          apiToken:
+            creationOfLegacyTokenEnabled: false
+            tokenGenerationOnCreationEnabled: false
+            usageStatisticsEnabled: true
+        # Ignored if securityRealm is defined in controller.JCasC.configScripts
+        securityRealm: |-
+          local:
+            allowsSignup: false
+            enableCaptcha: false
+            users:
+            - id: "${chart-admin-username}"
+              name: "Jenkins Admin"
+              password: "${chart-admin-password}"
+        # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
+        authorizationStrategy: |-
+          loggedInUsersCanDoAnything:
+            allowAnonymousRead: false
+      # Optionally specify additional init-containers
+      customInitContainers: [ ]
+      # - name: custom-init
+      #   image: "alpine:3.7"
+      #   imagePullPolicy: Always
+      #   command: [ "uname", "-a" ]
+
+
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        annotations:
+          hajimari.io/icon: simple-icons:grafana
+        hosts:
+          - &host "grafana.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - *host
+
     agent:
       enabled: true
-      namespace: ci-cd-system
-      image: "	jenkins/inbound-agent"
+      image: "jenkins/inbound-agent"
+      tag: "3107.v665000b_51092-15"
+      workingDir: "/home/jenkins/agent"
       resources:
         requests:
           cpu: "512m"
@@ -100,4 +158,32 @@ spec:
           cpu: "512m"
           memory: "512Mi"
           # ephemeralStorage:
+
+    persistence:
+      enabled: true
+      storageClass: local-path
+      accessMode: "ReadWriteOnce"
+      size: "10Gi"
+
+    networkPolicy:
+      # Enable creation of NetworkPolicy resources.
+      enabled: false
+      # For Kubernetes v1.4, v1.5 and v1.6, use 'extensions/v1beta1'
+      # For Kubernetes v1.7, use 'networking.k8s.io/v1'
+      apiVersion: networking.k8s.io/v1
+      # You can allow agents to connect from both within the cluster (from within specific/all namespaces) AND/OR from a given external IP range
+      internalAgents:
+        allowed: true
+        podLabels: { }
+        namespaceLabels: { }
+        # project: myproject
+      externalAgents: { }
+      #   ipCIDR: 172.17.0.0/16
+      #   except:
+      #     - 172.17.1.0/24
+
+    ## Install Default RBAC roles and bindings
+    rbac:
+      create: true
+      readSecrets: false
 
