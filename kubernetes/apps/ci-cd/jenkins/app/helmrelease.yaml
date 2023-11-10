@@ -47,7 +47,6 @@ spec:
 
     persistence:
       enabled: true
-      existingClaim: jenkins-pvc
       storageClass: local-path
       size: 10Gi
       mounts:
