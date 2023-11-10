@@ -7,27 +7,20 @@ metadata:
 spec:
   interval: 1h
   releaseName: flagger
-  maxHistory: 2
   install: # override existing Flagger CRDs
-    remediation:
-      retries: 3
     crds: CreateReplace
   upgrade: # update Flagger CRDs
     crds: CreateReplace
-    cleanupOnFail: true
-    remediation:
-      retries: 3
-  uninstall:
-    keepHistory: false
   chart:
     spec:
       chart: flagger
       version: 1.x # update Flagger to the latest minor version
-      interval: 30m # scan for new versions every six hours
+      interval: 6h # scan for new versions every six hours
       sourceRef:
         kind: HelmRepository
         name: flagger
-        namespace: flux-system
+      verify: # verify the chart signature with Cosign keyless
+        provider: cosign
   values:
     nodeSelector:
       kubernetes.io/os: linux
