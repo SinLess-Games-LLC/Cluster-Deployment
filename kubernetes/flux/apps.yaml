@@ -10,7 +10,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: helix-kubernetes
+    name: home-kubernetes
   decryption:
     provider: sops
     secretRef:
