@@ -8,6 +8,7 @@ resources:
   - ./coredns.yaml
   - ./csi-driver-nfs.yaml
   - ./external-dns.yaml
+  - ./flagger.yaml
   - ./grafana.yaml
   - ./hajimari.yaml
   # - ./hashicorp.yaml
