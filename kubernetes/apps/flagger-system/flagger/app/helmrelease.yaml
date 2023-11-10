@@ -55,7 +55,6 @@ spec:
       namespace: monitoring
       labels:
         release: prometheus
-    clusterName: helix-kubernetes
     podMonitor:
       enabled: true
     leaderElection:
