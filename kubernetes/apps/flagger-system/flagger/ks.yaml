@@ -7,9 +7,6 @@ metadata:
 spec:
   path: ./kubernetes/apps/flagger-system/flagger/app
   prune: true
-  sourceRef:
-    kind: GitRepository
-    name: helix-kubernetes
   wait: false
   interval: 30m
   retryInterval: 1m
