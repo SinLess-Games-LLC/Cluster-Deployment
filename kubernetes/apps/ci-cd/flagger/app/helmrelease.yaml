@@ -39,10 +39,36 @@ spec:
     # accepted values are kubernetes, istio, linkerd, appmesh, contour, nginx, gloo, skipper, traefik, apisix, osm
     meshProvider: ""
 
+    # single namespace restriction
+    namespace: ""
     ingressClass: internal
 
     nodeSelector:
       kubernetes.io/os: linux
+
+    podMonitor:
+      enabled: false
+      namespace:
+      interval: 15s
+      additionalLabels: { }
+
+    serviceAccount:
+      # serviceAccount.create: Whether to create a service account or not
+      create: true
+      # serviceAccount.name: The name of the service account to create or use
+      name: ""
+      # serviceAccount.annotations: Annotations for service account
+      annotations: { }
+
+    rbac:
+      # rbac.create: `true` if rbac resources should be created
+      create: true
+      # rbac.pspEnabled: `true` if PodSecurityPolicy resources should be created
+      pspEnabled: false
+
+    crd:
+      # crd.create: `true` if custom resource definitions should be created
+      create: false
 
     resources:
       limits:
