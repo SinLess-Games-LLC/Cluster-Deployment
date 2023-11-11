@@ -99,7 +99,7 @@ spec:
       privileged: true
 
       podTemplates:
-        python:
+        python: |
           - name: python
             label: jenkins-python
             serviceAccount: jenkins
