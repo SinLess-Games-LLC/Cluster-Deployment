@@ -78,7 +78,7 @@ spec:
           - &host "jenkins.${SECRET_DOMAIN}"
         tls:
           - hosts:
-            - *host "jenkins.${SECRET_DOMAIN}"
+            - *host
 
     agent:
       enabled: true
