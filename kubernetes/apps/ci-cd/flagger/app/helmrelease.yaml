@@ -64,7 +64,7 @@ spec:
 
     crd:
       # crd.create: `true` if custom resource definitions should be created
-      create: true
+      create: false
 
     resources:
       limits:
