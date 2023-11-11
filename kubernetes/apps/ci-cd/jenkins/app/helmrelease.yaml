@@ -16,9 +16,11 @@ spec:
         namespace: flux-system
   maxHistory: 2
   install:
+    crds: CreateReplace
     remediation:
       retries: 3
   upgrade:
+    crds: CreateReplace
     cleanupOnFail: true
     remediation:
       retries: 3
@@ -92,12 +94,88 @@ spec:
           cpu: "512m"
           memory: "512Mi"
           # ephemeralStorage:
+      podTemplates:
+        # Python
+        - name: python
+          label: jenkins-python
+          serviceAccount: jenkins
+          containers:
+          - name: python
+            image: python:3
+            command: "/bin/sh -c"
+            args: "cat"
+            ttyEnabled: true
+            privileged: true
+            resourceRequestCpu: "400m"
+            resourceRequestMemory: "512Mi"
+            resourceLimitCpu: "1"
+            resourceLimitMemory: "1024Mi"
+        # NodeJS
+        - name: nodejs
+          label: jenkins-nodejs
+          serviceAccount: jenkins
+          containers:
+          - name: nodejs
+            image: node:12
+            command: "/bin/sh -c"
+            args: "cat"
+            ttyEnabled: true
+            privileged: true
+            resourceRequestCpu: "400m"
+            resourceRequestMemory: "512Mi"
+            resourceLimitCpu: "1"
+            resourceLimitMemory: "1024Mi"
+        # docker
+        - name: docker
+          label: jenkins-docker
+          serviceAccount: jenkins
+          containers:
+          - name: docker
+            image: docker:19
+            command: "/bin/sh -c"
+            args: "cat"
+            ttyEnabled: true
+            privileged: true
+            resourceRequestCpu: "400m"
+            resourceRequestMemory: "512Mi"
+            resourceLimitCpu: "1"
+            resourceLimitMemory: "1024Mi"
 
     persistence:
       enabled: true
       storageClass: local-path
       accessMode: "ReadWriteOnce"
       size: "10Gi"
+
+
+    # Expose Prometheus metrics
+    prometheus:
+      # If enabled, add the prometheus plugin to the list of plugins to install
+      # https://plugins.jenkins.io/prometheus
+      enabled: true
+      # Additional labels to add to the ServiceMonitor object
+      serviceMonitorAdditionalLabels: { }
+      # Set a custom namespace where to deploy ServiceMonitor resource
+      # serviceMonitorNamespace: monitoring
+      scrapeInterval: 60s
+      # This is the default endpoint used by the prometheus plugin
+      scrapeEndpoint: /prometheus
+      # Additional labels to add to the PrometheusRule object
+      alertingRulesAdditionalLabels: { }
+      # An array of prometheus alerting rules
+      # See here: https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+      # The `groups` root object is added by default, simply add the rule entries
+      alertingrules: [ ]
+      # Set a custom namespace where to deploy PrometheusRule resource
+      prometheusRuleNamespace: ""
+
+      # RelabelConfigs to apply to samples before scraping. Prometheus Operator automatically adds
+      # relabelings for a few standard Kubernetes fields. The original scrape job’s name
+      # is available via the __tmp_prometheus_job_name label.
+      # More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
+      relabelings: [ ]
+      # MetricRelabelConfigs to apply to samples before ingestion.
+      metricRelabelings: [ ]
 
     ## Install Default RBAC roles and bindings
     rbac:
