@@ -91,8 +91,15 @@ spec:
 
     agent:
       enabled: true
+      namespace: ci-cd-system
+      containerCap: 20
+      jenkinsUrl: "https://jenkins.${SECRET_DOMAIN}"
+      image: "jenkins/jnlp-agent"
+      podName: jenkins-agent
+      privileged: true
+
       podTemplates:
-        python: |
+        python:
           - name: python
             label: jenkins-python
             serviceAccount: jenkins
