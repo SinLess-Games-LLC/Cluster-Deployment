@@ -48,7 +48,7 @@ spec:
               - *host
 
     persistence:
-      enabled: true
+      enabled: false
       storageClass: local-path
       accessMode: "ReadWriteOnce"
       size: "10Gi"
