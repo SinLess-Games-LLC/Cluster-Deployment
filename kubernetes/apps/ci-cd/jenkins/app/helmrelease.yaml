@@ -28,6 +28,16 @@ spec:
     - name: local-path-provisioner
       namespace: kube-system
   values:
+    ingress:
+      enabled: true
+      ingressClassName: internal
+      annotations:
+        hajimari.io/icon: simple-icons:jenkins
+      hosts:
+        - &host "jenkins.${SECRET_DOMAIN}"
+      tls:
+        - hosts:
+            - *host
     controller:
       # Used for label app.kubernetes.io/component
       componentName: "jenkins-controller"
@@ -54,7 +64,7 @@ spec:
         enabled: true
         ingressClassName: internal
         annotations:
-          hajimari.io/icon: simple-icons:grafana
+          hajimari.io/icon: simple-icons:jenkins
         hosts:
           - &host "jenkins.${SECRET_DOMAIN}"
         tls:
