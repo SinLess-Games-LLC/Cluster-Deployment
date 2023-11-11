@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-flagger
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/flagger-system/flagger/app
+  path: ./kubernetes/apps/ci-cd/flagger/app
   prune: true
   sourceRef:
     kind: GitRepository
