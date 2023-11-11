@@ -70,7 +70,7 @@ spec:
       # Use the Enterprise Image
       image:
         repository: "hashicorp/vault-enterprise"
-        tag: "1.15.0-ent"
+        tag: "1.15.2-ent"
 
       # These Resource Limits are in line with node requirements in the
       # Vault Reference Architecture for a Small Cluster
