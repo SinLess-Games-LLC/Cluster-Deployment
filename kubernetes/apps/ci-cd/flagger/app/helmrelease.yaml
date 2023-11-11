@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: cluster-apps-flagger
-  namespace: flagger-system
+  namespace: ci-cd-system
 spec:
   interval: 1h
   releaseName: flagger
