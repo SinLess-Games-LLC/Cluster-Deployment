@@ -37,7 +37,7 @@ spec:
     metricsServer: "https://prometheus.${SECRET_DOMAIN}"
     clusterName: home-kubernetes
     # accepted values are kubernetes, istio, linkerd, appmesh, contour, nginx, gloo, skipper, traefik, apisix, osm
-    meshProvider: ""
+    meshProvider: nginx
 
     # single namespace restriction
     namespace: ""
