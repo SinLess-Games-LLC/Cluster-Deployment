@@ -36,6 +36,7 @@ spec:
       image: "jenkins/jenkins"
       servicePort: 8080
       targetPort: 8080
+      numExecutors: 5
 
       # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
       # Cloudbees Jenkins Distribution docker, you should set jenkinsHome: "/var/cloudbees-jenkins-distribution"
@@ -77,6 +78,7 @@ spec:
             jenkins:
               systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
 
+
       ingress:
         enabled: true
         ingressClassName: internal
@@ -89,6 +91,23 @@ spec:
 
     agent:
       enabled: true
+      podTemplates:
+        # Python
+        - name: python
+          label: jenkins-python
+          serviceAccount: jenkins
+          containers:
+            - name: python
+              image: python:3
+              command: "/bin/sh -c"
+              args: "cat"
+              ttyEnabled: true
+              privileged: true
+              resourceRequestCpu: "400m"
+              resourceRequestMemory: "512Mi"
+              resourceLimitCpu: "1"
+              resourceLimitMemory: "1024Mi"
+
 
     persistence:
       enabled: true
@@ -99,5 +118,5 @@ spec:
 
     rbac:
       create: true
-      readSecrets: false
+      readSecrets: true
 
