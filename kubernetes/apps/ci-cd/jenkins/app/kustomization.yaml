@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: ci-cd-system
 resources:
   - ./helmrelease.yaml
-  # - ./secret.sops.yaml
+  - ./secret.sops.yaml
