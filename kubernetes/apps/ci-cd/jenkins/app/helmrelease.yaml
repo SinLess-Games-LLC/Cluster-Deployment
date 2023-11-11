@@ -37,6 +37,9 @@ spec:
       servicePort: 8080
       targetPort: 808
 
+      adminSecret: false
+      adminUser: 'Sinless777'
+
       admin:
         existingSecret:
           name: jenkins-admin-secret
