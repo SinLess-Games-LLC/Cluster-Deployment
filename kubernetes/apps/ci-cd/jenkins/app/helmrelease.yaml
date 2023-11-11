@@ -37,16 +37,6 @@ spec:
       servicePort: 8080
       targetPort: 8080
 
-      # The default configuration uses this secret to configure an admin user
-      # If you don't need that user or use a different security realm then you can disable it
-      adminSecret: false
-      adminUser: 'Sinless777'
-
-      admin:
-        existingSecret: jenkins-admin-secret
-        userKey: jenkins-admin-user
-        passwordKey: jenkins-admin-password
-
       # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
       # Cloudbees Jenkins Distribution docker, you should set jenkinsHome: "/var/cloudbees-jenkins-distribution"
       jenkinsHome: "/var/jenkins_home"
