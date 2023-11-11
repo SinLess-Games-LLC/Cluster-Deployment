@@ -37,11 +37,13 @@ spec:
       servicePort: 8080
       targetPort: 8080
 
+      # The default configuration uses this secret to configure an admin user
+      # If you don't need that user or use a different security realm then you can disable it
       adminSecret: false
       adminUser: 'Sinless777'
 
       admin:
-        existingSecret: "jenkins-admin-secret"
+        existingSecret: jenkins-admin-secret
         userKey: jenkins-admin-user
         passwordKey: jenkins-admin-password
 
