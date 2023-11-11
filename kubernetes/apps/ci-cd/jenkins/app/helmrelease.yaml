@@ -41,11 +41,7 @@ spec:
       adminUser: 'Sinless777'
 
       admin:
-        existingSecret:
-          - name: jenkins-admin-secret
-            key: jenkins-admin-password
-          - name: jenkins-admin-secret
-            key: jenkins-admin-user
+        existingSecret: "jenkins-admin-secret"
 
       # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
       # Cloudbees Jenkins Distribution docker, you should set jenkinsHome: "/var/cloudbees-jenkins-distribution"
