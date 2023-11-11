@@ -109,6 +109,22 @@ spec:
               resourceLimitMemory: "1024Mi"
 
 
+      additionalAgents:
+        maven:
+          podName: maven
+          customJenkinsLabels: maven
+          image: jenkins/jnlp-agent-maven
+          tag: latest
+        python:
+          podName: python
+          customJenkinsLabels: python
+          sideContainerName: python
+          image: python
+          tag: latest
+          command: "/bin/sh -c"
+          args: "cat"
+          TTYEnabled: true
+
     persistence:
       enabled: true
       storageClass: local-path
