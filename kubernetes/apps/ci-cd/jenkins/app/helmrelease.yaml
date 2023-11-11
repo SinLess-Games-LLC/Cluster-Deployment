@@ -35,7 +35,7 @@ spec:
       componentName: "jenkins-controller"
       image: "jenkins/jenkins"
       servicePort: 8080
-      targetPort: 808
+      targetPort: 8080
 
       adminSecret: false
       adminUser: 'Sinless777'
