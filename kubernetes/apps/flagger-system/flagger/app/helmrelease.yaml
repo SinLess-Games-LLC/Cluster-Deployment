@@ -23,8 +23,34 @@ spec:
       verify: # verify the chart signature with Cosign keyless
         provider: cosign
   values:
+    image:
+      repository: ghcr.io/fluxcd/flagger
+      tag: 1.34.0
+      pullPolicy: IfNotPresent
+
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8080"
+      appmesh.k8s.aws/sidecarInjectorWebhook: disabled
+      linkerd.io/inject: enabled
+
+    metricsServer: "https://prometheus.${SECRET_DOMAIN}"
+    clusterName: home-kubernetes
+    # accepted values are kubernetes, istio, linkerd, appmesh, contour, nginx, gloo, skipper, traefik, apisix, osm
+    meshProvider: ""
+
+    # single namespace restriction
+    namespace: ""
+    ingressClass: internal
+
     nodeSelector:
       kubernetes.io/os: linux
+
+    podMonitor:
+      enabled: false
+      namespace:
+      interval: 15s
+      additionalLabels: { }
 
     serviceAccount:
       # serviceAccount.create: Whether to create a service account or not
@@ -42,7 +68,7 @@ spec:
 
     crd:
       # crd.create: `true` if custom resource definitions should be created
-      create: false
+      create: true
 
     resources:
       limits:
