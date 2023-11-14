@@ -11,6 +11,23 @@ spec:
       podTemplate:
         metadata:
           nameSpace: helix
+        spec:
+          containers:
+            - name: elasticsearch
+              readinessProbe:
+                exec:
+                  command:
+                    - bash
+                    - -c
+                    - /mnt/elastic-internal/scripts/readiness-probe-script.sh
+                failureThreshold: 3
+                initialDelaySeconds: 10
+                periodSeconds: 12
+                successThreshold: 1
+                timeoutSeconds: 12
+              env:
+                - name: READINESS_PROBE_TIMEOUT
+                  value: "10"
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -29,6 +46,23 @@ spec:
       podTemplate:
         metadata:
           nameSpace: helix
+        spec:
+          containers:
+            - name: elasticsearch
+              readinessProbe:
+                exec:
+                  command:
+                    - bash
+                    - -c
+                    - /mnt/elastic-internal/scripts/readiness-probe-script.sh
+                failureThreshold: 3
+                initialDelaySeconds: 10
+                periodSeconds: 12
+                successThreshold: 1
+                timeoutSeconds: 12
+              env:
+                - name: READINESS_PROBE_TIMEOUT
+                  value: "10"
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
