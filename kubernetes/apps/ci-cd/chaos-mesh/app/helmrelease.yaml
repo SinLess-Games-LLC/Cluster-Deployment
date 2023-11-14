@@ -35,6 +35,10 @@ spec:
       replicaCount: 3
       rootUrl: "https://chaos-mesh.${SECRET_DOMAIN}"
 
+      service:
+        type: ClusterIP
+        port: 2333
+
       ingress:
         enabled: true
         ingressClass: internal
