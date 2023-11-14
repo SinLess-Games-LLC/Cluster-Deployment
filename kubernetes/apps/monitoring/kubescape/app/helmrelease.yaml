@@ -40,6 +40,9 @@ spec:
         kubevuln: 2Gi
       accessMode: ReadWriteOnce
 
+    nodeAgent:
+      privileged: true
+
     kubescapeScheduler:
       replicaCount: 1
 
