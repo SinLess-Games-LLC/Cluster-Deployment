@@ -21,7 +21,7 @@ spec:
           - hosts:
               - *host
       containers:
-        - name: kibana
+        - name: helix-kibana
   http:
     service:
       spec:
