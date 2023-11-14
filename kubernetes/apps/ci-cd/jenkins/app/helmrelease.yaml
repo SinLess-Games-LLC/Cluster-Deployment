@@ -49,13 +49,15 @@ spec:
         - git:5.2.1
         - configuration-as-code:1737.v652ee9b_a_e0d9
         - kubernetes-pipeline-devops-steps:1.6
+        - command-launcher:107.v773860566e2e
+        - jdk-tool:73.vddf737284550
       # additionalPlugins: []
         # - instance-identity:185.v303dc7c645f9
         # - docker-pipeline:572.v950f58993843
         # - theme-manager:215.vc1ff18d67920
         # - discord-notifier:241.v448b_ccd0c0d6
 
-      # Set to false to download the minimum required version of all dependencies.
+      # Set too false to download the minimum required version of all dependencies.
       installLatestPlugins: true
 
       jenkinsUrlProtocol: "https"
