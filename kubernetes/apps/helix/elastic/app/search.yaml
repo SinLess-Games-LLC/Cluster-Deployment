@@ -7,7 +7,7 @@ spec:
   version: 8.11.1
   nodeSets:
     - name: masters
-      count: 1
+      count: 3
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -22,7 +22,7 @@ spec:
         node.roles: [ "master" ]
         xpack.ml.enabled: true
     - name: data
-      count: 1
+      count: 5
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
