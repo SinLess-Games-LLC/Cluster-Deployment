@@ -41,10 +41,10 @@ spec:
       accessMode: ReadWriteOnce
 
     kubescapeScheduler:
-      replicaCount: 3
+      replicaCount: 1
 
     kubescape:
-      replicaCount: 3
+      replicaCount: 1
       prometheusAnnotations: true
 
     operator:
