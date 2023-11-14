@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: elastic-operator
-  namespace: helix
+  namespace: helix-ai-app
 spec:
   dependsOn:
     - name: local-path-provisioner

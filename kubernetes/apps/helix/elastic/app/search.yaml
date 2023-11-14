@@ -2,7 +2,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: helix-elasticsearch
-  namespace: helix
+  namespace: helix-ai-app
 spec:
   version: 8.11.1
   nodeSets:
@@ -11,7 +11,6 @@ spec:
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-            namespace: helix
           spec:
             accessModes:
               - ReadWriteOnce
@@ -27,7 +26,6 @@ spec:
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-            namespace: helix
           spec:
             accessModes:
               - ReadWriteOnce
