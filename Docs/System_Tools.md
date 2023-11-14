@@ -72,7 +72,7 @@ check marks indicate that the tool has been added to the cluster, but may not ac
 ## Data Management
 
 - [ ] 💚[Redis Operator](https://operatorhub.io/operator/redis-operator) - Makes/oversees Redis standalone/cluster mode setup on top of the Kubernetes.
-
+- [ ] 💚[Mysql Operator](https://operatorhub.io/operator/mysql-operator) - The MySQL Operator for Kubernetes wraps the MySQL Server and MySQL Client utilities together in a single container image, and is designed to be run in a Kubernetes cluster.
 
 
 
