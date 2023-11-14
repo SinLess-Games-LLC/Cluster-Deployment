@@ -29,6 +29,11 @@ spec:
   values:
     timezone: "America/Denver"
 
+    chaosDaemon:
+      runtime: containerd
+      socketPath: /run/k3s/containerd/containerd.sock
+
+
     dashboard:
       # Enable dashboard
       enabled: true
