@@ -8,7 +8,7 @@ spec:
   elasticsearchRefs:
     - name: helix-elasticsearch
   kibanaRef:
-    - name: helix-kibana
+    name: helix-kibana
   mode: fleet
   policyID: eck-fleet-server
   fleetServerEnabled: true
