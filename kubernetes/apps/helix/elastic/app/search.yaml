@@ -17,7 +17,7 @@ spec:
             resources:
               requests:
                 storage: 5Gi
-            storageClassName: standard
+            storageClassName: local-path
       config:
         node.roles: [ "master" ]
         xpack.ml.enabled: true
@@ -32,7 +32,7 @@ spec:
             resources:
               requests:
                 storage: 6Gi
-            storageClassName: standard
+            storageClassName: local-path
       config:
         node.roles: [ "data", "ingest", "ml", "transform" ]
 
