@@ -33,7 +33,7 @@ spec:
       # Enable dashboard
       enabled: true
       replicaCount: 3
-      rootUrl: "https://chaosmesh.${SECRET_DOMAIN}"
+      rootUrl: https://chaosmesh.${SECRET_DOMAIN}
 
       service:
         type: ClusterIP
@@ -42,7 +42,7 @@ spec:
         enabled: true
         ingressClass: internal
         hosts:
-          - name: "https://chaosmesh.${SECRET_DOMAIN}"
+          - name: https://chaosmesh.${SECRET_DOMAIN}
             tls: true
         annotations:
           hajimari.io/icon: simple-icons:grafana
