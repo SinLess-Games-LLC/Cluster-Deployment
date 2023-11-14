@@ -11,6 +11,7 @@ spec:
       chart: chaos-mesh
       sourceRef:
         kind: HelmRepository
+        version: 2.6.2
         name: chaos-mesh
         namespace: flux-system
   maxHistory: 2
