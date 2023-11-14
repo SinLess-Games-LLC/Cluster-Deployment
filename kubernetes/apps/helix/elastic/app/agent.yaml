@@ -10,8 +10,8 @@ spec:
   kibanaRef:
     name: helix-kibana
   mode: fleet
-  policyID: eck-fleet-server
   fleetServerEnabled: true
+  policyID: eck-fleet-server
   deployment:
     replicas: 1
     podTemplate:
