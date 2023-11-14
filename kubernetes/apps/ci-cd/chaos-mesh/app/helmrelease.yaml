@@ -48,7 +48,7 @@ spec:
         ingressClass: internal
         hosts:
           - name: "chaosmesh.${SECRET_DOMAIN}"
-            tls: false
+            tls: true
         annotations:
           hajimari.io/icon: simple-icons:grafana
 
