@@ -12,3 +12,4 @@ resources:
   - ./maps.yaml
   - ./heartbeat.yaml
   - ./metricbeat.yaml
+  - ./packetbeat.yaml
