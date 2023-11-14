@@ -25,7 +25,7 @@ spec:
     xpack.fleet.agentPolicies:
       - name: Fleet Server on ECK policy
         id: eck-fleet-server
-        namespace: helix-ai-app
+        namespace: 'helix-ai-app'
         monitoring_enabled:
           - logs
           - metrics
@@ -37,7 +37,7 @@ spec:
               name: fleet_server
       - name: Elastic Agent on ECK policy
         id: eck-agent
-        namespace: helix-ai-app
+        namespace: 'helix-ai-app'
         monitoring_enabled:
           - logs
           - metrics
