@@ -16,7 +16,7 @@ spec:
               - ReadWriteOnce
             resources:
               requests:
-                storage: Gi
+                storage: 1Gi
             storageClassName: local-path
       config:
         node.roles: [ "master" ]
