@@ -27,15 +27,12 @@ spec:
     - name: local-path-provisioner
       namespace: kube-system
   values:
-    rbac:
-      create: true
-
     timezone: "America/Denver"
 
     dashboard:
       # Enable dashboard
       enabled: true
-
+      replicaCount: 3
       rootUrl: "https://chaos-mesh.${SECRET_DOMAIN}"
 
       ingress:
@@ -43,13 +40,10 @@ spec:
         certManager: true
         ingressClassName: internal
         hosts:
-          - name: &host "https://chaos-mesh.${SECRET_DOMAIN}"
+          - name: https://chaos-mesh.${SECRET_DOMAIN}
             tls: true
         annotations:
           hajimari.io/icon: simple-icons:grafana
-        tls:
-          - hosts:
-              - *host
 
       persistentVolume:
         enabled: true
