@@ -30,3 +30,6 @@ spec:
   values:
     # replicaCount is the number of operator pods to run.
     replicaCount: 1
+
+    managedNamespaces:
+      - helix-ai-app
