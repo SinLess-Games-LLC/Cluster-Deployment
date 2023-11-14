@@ -14,7 +14,7 @@ spec:
     xpack.fleet.agents.elasticsearch.hosts:
       - "https://10.43.96.57:9200"
     xpack.fleet.agents.fleet_server.hosts:
-      - "https://"
+      - "https://10.43.149.217:8220"
     xpack.fleet.packages:
       - name: system
         version: latest
