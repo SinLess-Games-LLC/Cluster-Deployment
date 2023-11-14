@@ -9,6 +9,9 @@ spec:
   elasticsearchRef:
     name: helix-elasticsearch
     namespace: helix-ai-app
+  enterpriseSearchRef:
+    name: helix-enterprise-search
+    namespace: helix-ai-app
 
   config:
     xpack.fleet.agents:
