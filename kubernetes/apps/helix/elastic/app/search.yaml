@@ -8,6 +8,9 @@ spec:
   nodeSets:
     - name: masters
       count: 3
+      podTemplate:
+        metadata:
+          nameSpace: helix
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -23,6 +26,9 @@ spec:
         xpack.ml.enabled: true
     - name: data
       count: 5
+      podTemplate:
+        metadata:
+          nameSpace: helix
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
