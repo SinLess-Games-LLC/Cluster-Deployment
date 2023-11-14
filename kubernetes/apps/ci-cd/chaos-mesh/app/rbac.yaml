@@ -2,14 +2,14 @@ kind: ServiceAccount
 apiVersion: v1
 metadata:
   namespace: ci-cd-system
-  name: account-default-manager
+  name: account-cluster-manager
 
 ---
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: ci-cd-system
-  name: role-default-manager
+  name: role-cluster-manager
 rules:
   - apiGroups: [""]
     resources: ["pods", "namespaces"]
@@ -20,15 +20,15 @@ rules:
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: bind-default-manager
+  name: bind-cluster-manager
   namespace: ci-cd-system
 subjects:
   - kind: ServiceAccount
-    name: account-default-manager
+    name: account-cluster-manager
     namespace: ci-cd-system
 roleRef:
-  kind: Role
-  name: role-default-manager
+  kind: ClusterRole
+  name: role-cluster-manager
   apiGroup: rbac.authorization.k8s.io
