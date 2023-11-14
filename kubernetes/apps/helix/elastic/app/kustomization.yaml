@@ -9,3 +9,4 @@ resources:
   - ./apm.yaml
   - ./filebeat.yaml
   - ./agent.yaml
+  - ./maps.yaml
