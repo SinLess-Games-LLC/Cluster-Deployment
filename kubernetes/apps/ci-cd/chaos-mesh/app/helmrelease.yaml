@@ -46,7 +46,7 @@ spec:
         ingressClassName: internal
         annotations:
           hajimari.io/icon: simple-icons:grafana
-        hostName: &host "chaos-mesh.${SECRET_DOMAIN}"
+        hostName: &host "https://chaos-mesh.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - *host
