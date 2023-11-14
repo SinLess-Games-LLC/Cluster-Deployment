@@ -8,3 +8,5 @@ spec:
   count: 3
   elasticsearchRef:
     name: helix-elasticsearch
+  kibanaRef:
+    name: helix-kibana
