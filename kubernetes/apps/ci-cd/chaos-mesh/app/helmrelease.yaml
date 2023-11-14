@@ -9,7 +9,6 @@ spec:
   chart:
     spec:
       chart: chaos-mesh
-      version: 2.x
       sourceRef:
         kind: HelmRepository
         name: chaos-mesh
