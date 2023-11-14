@@ -3,7 +3,7 @@
 
 - [x] 💚[Helm](https://github.com/helm/helm) - Helm is a tool for managing Charts. Charts are packages of pre-configured Kubernetes resources.
 - [x] 💚[Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) - The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters.
-- [X] 💚[Ansible]() - Ansible is an open-source software provisioning, configuration management, and application-deployment tool.
+- [X] 💚[Ansible](https://docs.ansible.com/) - Ansible is an open-source software provisioning, configuration management, and application-deployment tool.
 
 ## Cluster Provisioning
 
@@ -14,7 +14,7 @@
 
 - [x] 💚[Flux2](https://github.com/fluxcd/flux2) - Flux version 2 is built from the ground up to use Kubernetes' API extension system, and to integrate with Prometheus and other core components of the Kubernetes ecosystem.
 - [ ] 💚[Jenkins](https://www.jenkins.io/) - Jenkins is the leading open-source automation server used by companies such as Facebook, Netflix, and Adobe to implement continuous integration and deployment pipelines.
-- [x] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
+- [ ] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
 
 ## Cluster Resources Management
 
@@ -32,11 +32,11 @@
 
 ## Storage
 
-- 💚[Longhorn](https://github.com/longhorn/longhorn) - Longhorn is a distributed block storage system for Kubernetes.
+- [ ] 💚[Longhorn](https://github.com/longhorn/longhorn) - Longhorn is a distributed block storage system for Kubernetes.
 
 ## Testing and Troubleshooting
 
-- 💚[Chaos Mesh](https://github.com/chaos-mesh/chaos-mesh) - Chaos Mesh® is a cloud-native Chaos Engineering platform that orchestrates chaos on Kubernetes environments.
+- [ ] 💚[Chaos Mesh](https://github.com/chaos-mesh/chaos-mesh) - Chaos Mesh® is a cloud-native Chaos Engineering platform that orchestrates chaos on Kubernetes environments.
 
 ## Monitoring, Alerts, and Visualization
 
@@ -48,7 +48,7 @@
 - [ ] 💚[Loki](https://github.com/grafana/loki) - Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
 - [ ] 💚[Weave Scope](https://www.weave.works/oss/scope/) - Weave Scope automatically generates a map of your application, enabling you to intuitively understand, monitor, and control your containerized, microservices-based application.
 - [x] 💚[Weave Gitops](https://docs.gitops.weave.works/docs/intro-weave-gitops/) - Weave GitOps is a developer-centric operating model for Kubernetes that extends DevOps best practices to include operations by using Git as a single source of truth for declarative infrastructure and applications.
-- [ ] 💚[Jaeger]() - Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies.
+- [ ] 💚[Jaeger](https://www.jaegertracing.io/docs/1.18/) - Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies.
 
 ## Backup and Restore
 
