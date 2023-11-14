@@ -39,6 +39,7 @@ spec:
       enabled: true
       replicaCount: 3
       rootUrl: "https://chaos-mesh.${SECRET_DOMAIN}"
+      securityMode: false
 
       service:
         type: ClusterIP
