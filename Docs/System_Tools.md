@@ -24,8 +24,6 @@ check marks indicate that the tool has been added to the cluster, but may not ac
 ## Secrets Management
 
 - [x] 💚[SOPS]() - SOPS is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault and PGP.
-- [ ] 💚[Vault]() - Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets in modern computing.
-- [ ] 💚[vault-secrets-operator]() - An operator to create Kubernetes secrets from Vault for a secure GitOps based workflow
 
 ## Networking
 
@@ -34,8 +32,6 @@ check marks indicate that the tool has been added to the cluster, but may not ac
 - [x] 💚[ingress-nginx](https://github.com/kubernetes/ingress-nginx) - ingress-nginx is an Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.
 
 ## Storage
-
-- [ ] 💚[Longhorn](https://github.com/longhorn/longhorn) - Longhorn is a distributed block storage system for Kubernetes.
 
 ## Testing and Troubleshooting
 
@@ -48,8 +44,6 @@ check marks indicate that the tool has been added to the cluster, but may not ac
 - [x] 💚[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) - Kubernetes Dashboard is a general purpose, web-based UI for Kubernetes clusters.
 - [x] 💚[Lens](https://github.com/lensapp/lens) - Lens it's an useful, attractive, open source user interface (UI) for working with Kubernetes clusters.
 - [x] 💚[Prometheus](https://github.com/prometheus/prometheus) - Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system.
-- [ ] 💚[Loki](https://github.com/grafana/loki) - Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
-- [ ] 💚[Weave Scope](https://www.weave.works/oss/scope/) - Weave Scope automatically generates a map of your application, enabling you to intuitively understand, monitor, and control your containerized, microservices-based application.
 - [x] 💚[Weave Gitops](https://docs.gitops.weave.works/docs/intro-weave-gitops/) - Weave GitOps is a developer-centric operating model for Kubernetes that extends DevOps best practices to include operations by using Git as a single source of truth for declarative infrastructure and applications.
 - [ ] 💚[Jaeger](https://www.jaegertracing.io/docs/1.18/) - Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies.
 
@@ -61,9 +55,6 @@ check marks indicate that the tool has been added to the cluster, but may not ac
 - [ ] 💚[kubescape](https://github.com/kubescape/kubescape) - k8s risk analysis, security compliance, and misconfiguration scanning.
 
 ## Service Mesh
-
-- [ ] 💚[Istio](https://github.com/istio/istio) - An open platform to connect, manage, and secure microservices.
-- [ ] 💚[Consul](https://www.hashicorp.com/products/consul) - Consul is a service networking solution to connect and secure services across any runtime platform and public or private cloud.
 
 ## Development Tools
 
