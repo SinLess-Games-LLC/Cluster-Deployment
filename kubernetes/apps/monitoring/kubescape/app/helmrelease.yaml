@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubescape
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: kubescape-operator
+      version: 6.0.8
+      sourceRef:
+        kind: HelmRepository
+        name: kubescape
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    clusterName: home-kubernetes
+
+    persistence:
+      enabled: true
+      storageClass: local-path
+      size:
+        backingStorage: 5Gi
+        kubevuln: 2Gi
+      accessMode: ReadWriteOnce
+
+    kubescapeScheduler:
+      replicaCount: 3
+
+    kubescape:
+      replicaCount: 3
+      prometheusAnnotations: true
+
+    operator:
+      replicaCount: 1
