@@ -12,6 +12,7 @@ spec:
     service:
       spec:
         type: ClusterIP
+
   nodeSets:
     - name: masters
       count: 1
@@ -28,6 +29,7 @@ spec:
       config:
         node.roles: [ "master" ]
         xpack.ml.enabled: true
+
     - name: data
       count: 2
       volumeClaimTemplates:
