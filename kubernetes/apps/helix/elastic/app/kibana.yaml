@@ -11,8 +11,6 @@ spec:
     namespace: helix-ai-app
 
   config:
-    xpack.fleet.agents.elasticsearch.hosts:
-      - "https://10.43.139.126:9200"
     xpack.fleet.agents.fleet_server.hosts:
       - "https://10.43.116.140:8220"
     xpack.fleet.packages:
