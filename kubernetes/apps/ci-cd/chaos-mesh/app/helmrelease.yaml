@@ -9,9 +9,10 @@ spec:
   chart:
     spec:
       chart: chaos-mesh
+      version: 2.x
       sourceRef:
         kind: HelmRepository
-        name: chaos-mesh
+        name: chaos-mesh/chaos-mesh
         namespace: flux-system
   maxHistory: 2
   install:
