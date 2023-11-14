@@ -6,3 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./search.yaml
   - ./kibana.yaml
+  - ./apm.yaml
