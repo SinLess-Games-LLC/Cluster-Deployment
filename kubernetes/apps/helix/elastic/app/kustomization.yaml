@@ -8,3 +8,4 @@ resources:
   - ./kibana.yaml
   - ./apm.yaml
   - ./filebeat.yaml
+  - ./agent.yaml

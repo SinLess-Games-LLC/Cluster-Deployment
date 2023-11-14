@@ -97,8 +97,8 @@ spec:
       namespace: ci-cd-system
       containerCap: 20
       jenkinsUrl: "https://jenkins.${SECRET_DOMAIN}"
-      image: "jenkins/jnlp-agent"
-      podName: jenkins-agent
+      image: "jenkins/jnlp-agent.yaml"
+      podName: jenkins-agent.yaml
       privileged: true
 
       podTemplates:
@@ -167,7 +167,7 @@ spec:
         maven:
           podName: maven
           customJenkinsLabels: maven
-          image: jenkins/jnlp-agent-maven
+          image: jenkins/jnlp-agent.yaml-maven
           tag: latest
         python:
           podName: python
