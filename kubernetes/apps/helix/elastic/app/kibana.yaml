@@ -5,7 +5,7 @@ metadata:
   namespace: helix-ai-app
 spec:
   version: 8.11.1
-  count: 3 # INFO: leave at 3
+  count: 1 # INFO: leave at 3
   elasticsearchRef:
     name: helix-elasticsearch
     namespace: helix-ai-app
