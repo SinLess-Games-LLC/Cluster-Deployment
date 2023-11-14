@@ -1,15 +1,17 @@
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
-  name: helix-elastic-agent
+  name: helix-fleet-server
   namespace: helix-ai-app
 spec:
   version: 8.11.1
   elasticsearchRefs:
     - name: helix-elasticsearch
+  kibanaRef:
+    - name: helix-kibana
   mode: fleet
-  fleetServerEnabled: true
   policyID: eck-fleet-server
+  fleetServerEnabled: true
   deployment:
     replicas: 1
     podTemplate:
@@ -18,3 +20,29 @@ spec:
         automountServiceAccountToken: true
         securityContext:
           runAsUser: 0
+
+---
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: helix-elastic-agent
+  namespace: helix-ai-app
+spec:
+  version: 8.11.1
+  kibanaRef:
+    name: kibana-quickstart
+  fleetServerRef:
+    name: helix-fleet-server
+  mode: fleet
+  policyID: eck-agent
+  daemonSet:
+    podTemplate:
+      spec:
+        serviceAccountName: elastic-agent
+        automountServiceAccountToken: true
+        securityContext:
+          runAsUser: 0
+        volumes:
+          - name: agent-data
+            storageClassName: local-path
+            size: 1Gi
