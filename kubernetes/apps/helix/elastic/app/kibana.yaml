@@ -20,8 +20,7 @@ spec:
         tls:
           - hosts:
               - *host
-      containers:
-        - name: helix-kibana
+
   http:
     service:
       spec:
