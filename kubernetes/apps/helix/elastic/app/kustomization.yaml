@@ -11,3 +11,4 @@ resources:
   - ./agent.yaml
   - ./maps.yaml
   - ./heartbeat.yaml
+  - ./metricbeat.yaml
