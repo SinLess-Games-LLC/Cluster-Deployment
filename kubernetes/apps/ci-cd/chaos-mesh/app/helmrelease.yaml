@@ -31,14 +31,14 @@ spec:
 
     chaosDaemon:
       runtime: containerd
-      socketPath: /run/k3s/containerd/containerd.sock
+      socketPath: '/run/k3s/containerd/containerd.sock'
 
 
     dashboard:
       # Enable dashboard
       enabled: true
       replicaCount: 3
-      rootUrl: "https://chaosmesh.${SECRET_DOMAIN}"
+      rootUrl: "https://chaos-mesh.${SECRET_DOMAIN}"
 
       service:
         type: ClusterIP
@@ -47,7 +47,7 @@ spec:
         enabled: true
         ingressClass: internal
         hosts:
-          - name: "chaosmesh.${SECRET_DOMAIN}"
+          - name: "chaos-mesh.${SECRET_DOMAIN}"
             tls: true
         annotations:
           hajimari.io/icon: simple-icons:grafana
