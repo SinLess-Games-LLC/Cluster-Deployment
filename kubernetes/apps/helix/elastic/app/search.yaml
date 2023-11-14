@@ -14,7 +14,7 @@ spec:
         type: ClusterIP
 
   nodeSets:
-    - name: masters
+    - name: master
       count: 1
       volumeClaimTemplates:
         - metadata:
@@ -24,24 +24,5 @@ spec:
               - ReadWriteOnce
             resources:
               requests:
-                storage: 5Gi
+                storage: 10Gi
             storageClassName: local-path
-      config:
-        node.roles: [ "master" ]
-        xpack.ml.enabled: true
-
-    - name: data
-      count: 2
-      volumeClaimTemplates:
-        - metadata:
-            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-          spec:
-            accessModes:
-              - ReadWriteOnce
-            resources:
-              requests:
-                storage: 6Gi
-            storageClassName: local-path
-      config:
-        node.roles: [ "data", "ingest", "ml", "transform" ]
-
