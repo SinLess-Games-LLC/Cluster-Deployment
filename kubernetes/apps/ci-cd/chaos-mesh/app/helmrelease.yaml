@@ -57,3 +57,7 @@ spec:
         enabled: true
         storageClassName: local-path
         size: 5Gi
+
+    webhook:
+      certManager:
+        enabled: true

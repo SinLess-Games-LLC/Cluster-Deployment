@@ -1,3 +1,6 @@
+# Tech Stack
+
+check marks indicate that the tool has been added to the cluster, but may not actually be configured.
 
 ## Command Line Tools
 
@@ -14,7 +17,7 @@
 
 - [x] 💚[Flux2](https://github.com/fluxcd/flux2) - Flux version 2 is built from the ground up to use Kubernetes' API extension system, and to integrate with Prometheus and other core components of the Kubernetes ecosystem.
 - [x] 💚[Jenkins](https://www.jenkins.io/) - Jenkins is the leading open-source automation server used by companies such as Facebook, Netflix, and Adobe to implement continuous integration and deployment pipelines.
-- [ ] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
+- [x] 💚[Flagger](https://flagger.app/) - Progressive Delivery Operator for Kubernetes (canary deployments).
 
 ## Cluster Resources Management
 
@@ -36,7 +39,7 @@
 
 ## Testing and Troubleshooting
 
-- [ ] 💚[Chaos Mesh](https://github.com/chaos-mesh/chaos-mesh) - Chaos Mesh® is a cloud-native Chaos Engineering platform that orchestrates chaos on Kubernetes environments.
+- [x] 💚[Chaos Mesh](https://github.com/chaos-mesh/chaos-mesh) - Chaos Mesh® is a cloud-native Chaos Engineering platform that orchestrates chaos on Kubernetes environments.
 
 ## Monitoring, Alerts, and Visualization
 
