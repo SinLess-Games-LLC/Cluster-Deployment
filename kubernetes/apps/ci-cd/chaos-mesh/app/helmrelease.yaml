@@ -12,7 +12,7 @@ spec:
       version: 2.x
       sourceRef:
         kind: HelmRepository
-        name: chaos-mesh/chaos-mesh
+        name: chaos-mesh/
         namespace: flux-system
   maxHistory: 2
   install:
