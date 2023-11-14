@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./jenkins/ks.yaml
   - ./flagger/ks.yaml
+  - ./chaos-mesh/ks.yaml
