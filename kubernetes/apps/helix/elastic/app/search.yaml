@@ -8,25 +8,31 @@ spec:
   nodeSets:
     - name: masters
       count: 3
-      podTemplate:
-        spec:
-          volumes:
-            - name: elasticsearch-data
-              accessModes: [ "ReadWriteOnce" ]
-              storageClassName: local-path
-              size: 1Gi
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
+            storageClassName: local-path
       config:
         node.roles: [ "master" ]
         xpack.ml.enabled: true
     - name: data
       count: 10
-      podTemplate:
-        spec:
-          volumes:
-            - name: elasticsearch-data
-              accessModes: [ "ReadWriteOnce" ]
-              storageClassName: local-path
-              size: 2Gi
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 2Gi
+            storageClassName: local-path
       config:
         node.roles: [ "data", "ingest", "ml", "transform" ]
 
