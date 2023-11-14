@@ -10,3 +10,4 @@ resources:
   - ./filebeat.yaml
   - ./agent.yaml
   - ./maps.yaml
+  - ./heartbeat.yaml
