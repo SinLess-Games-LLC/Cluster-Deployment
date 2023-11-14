@@ -37,10 +37,9 @@ spec:
 
       ingress:
         enabled: true
-        certManager: true
         ingressClass: internal
         hosts:
-          - name: https://chaos-mesh.${SECRET_DOMAIN}
+          - name: "https://chaos-mesh.${SECRET_DOMAIN}"
             tls: true
         annotations:
           hajimari.io/icon: simple-icons:grafana
