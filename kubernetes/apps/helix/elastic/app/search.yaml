@@ -4,9 +4,6 @@ metadata:
   name: helix-elasticsearch
   namespace: helix
 spec:
-  dependsOn:
-    - name: local-path-provisioner
-      namespace: kube-system
   version: 8.11.1
   nodeSets:
     - name: masters
