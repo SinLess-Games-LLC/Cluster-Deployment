@@ -16,7 +16,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: ems-basemap
 spec:
-  storageClassName: "standard"
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
