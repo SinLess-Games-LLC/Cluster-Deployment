@@ -11,12 +11,22 @@ spec:
     namespace: helix-ai-app
   podTemplate:
     spec:
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        annotations:
+          hajimari.io/icon: simple-icons:kibana
+        hostName: &host "kibana.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - *host
       containers:
         - name: kibana
   http:
     service:
       spec:
         type: ClusterIP
+
 
     tls:
       selfSignedCertificate:
