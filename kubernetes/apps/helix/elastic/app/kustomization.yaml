@@ -5,3 +5,4 @@ namespace: helix-ai-app
 resources:
   - ./helmrelease.yaml
   - ./search.yaml
+  - ./kibana.yaml
