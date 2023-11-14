@@ -5,6 +5,9 @@ metadata:
   name: elastic-operator
   namespace: helix
 spec:
+  dependsOn:
+    - name: local-path-provisioner
+      namespace: kube-system
   interval: 30m
   chart:
     spec:
@@ -27,3 +30,6 @@ spec:
   values:
     # replicaCount is the number of operator pods to run.
     replicaCount: 1
+    volumeMounts:
+      - name: elastic-data
+        storageClassName: local-path
