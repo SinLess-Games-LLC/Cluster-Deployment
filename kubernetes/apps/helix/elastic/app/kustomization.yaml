@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: helix-ai-app
 resources:
   - ./helmrelease.yaml
-  - ./search.yaml
+  #- ./search.yaml
   #- ./kibana.yaml
   #- ./apm.yaml
   #- ./filebeat.yaml
