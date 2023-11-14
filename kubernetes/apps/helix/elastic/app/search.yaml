@@ -8,21 +8,35 @@ spec:
   nodeSets:
     - name: masters
       count: 3
-      volumeClaimTemplates:
-        - metadata:
-            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-          spec:
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              env:
+                - name: ES_JAVA_OPTS
+                  value: "-Xms1g -Xmx1g"
+          persistentVolumeClaim:
             storageClassName: local-path
+            resources:
+              requests:
+                storage: 1Gi
       config:
         node.roles: [ "master" ]
         xpack.ml.enabled: true
     - name: data
       count: 10
-      volumeClaimTemplates:
-        - metadata:
-            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-          spec:
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              env:
+                - name: ES_JAVA_OPTS
+                  value: "-Xms1g -Xmx1g"
+          persistentVolumeClaim:
             storageClassName: local-path
+            resources:
+              requests:
+                storage: 2Gi
       config:
         node.roles: [ "data", "ingest", "ml", "transform" ]
 
