@@ -10,7 +10,7 @@ spec:
       count: 3
       volumeClaimTemplates:
         - metadata:
-            name: elasticsearch-master-data # Do not change this name unless you set up a volume mount for the data path.
+            name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
           spec:
             accessModes:
               - ReadWriteOnce
