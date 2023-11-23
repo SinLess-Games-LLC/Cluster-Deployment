@@ -138,7 +138,7 @@ spec:
             serviceAccount: jenkins
             containers:
               - name: docker
-                image: docker:20
+                image: docker:24
                 command: "/bin/sh -c"
                 args: "cat"
                 ttyEnabled: true
