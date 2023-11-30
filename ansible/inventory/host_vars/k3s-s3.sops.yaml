@@ -1,21 +1,21 @@
-ansible_become_pass: ENC[AES256_GCM,data:r0uAzx7OouY=,iv:AlyZEhQt0UT9zz6DzZT0k36L0wSkpIJcmyRGpVHYcEM=,tag:uZiby20Pm3akB2a3gjI8LA==,type:str]
+ansible_become_pass: ENC[AES256_GCM,data:SV4FPZYy4x8=,iv:WLvyl+hVz+HkIKnBQ916Spck5lmz23WQURuntVw4etk=,tag:89oHuh6C0nA9f7GGfiBFQQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age:
-        - recipient: age182pun7cjjdxeg7nn493a3q43854g3tmlzykhdzwtaeyhyt5qu9zsk5fr3p
+        - recipient: age1dk9t24upsxd5zqs84t5l69m9fvzze9e7t7mm5n99d4tkr8whqacqpcjpgx
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBTV25UbWxhRjVqRko0SVNx
-            SXFreS8xWTFvWUM4ZE1BNWhheGN1SUM5WWtrCi80ZWM4dDNXWkVGVzlJc2tOV3Bm
-            dU4xdGUzdk5HOC9kbUpmZUlPbmtOVWsKLS0tIE1nK0hYMVZmUnIvdjBsYUcrZGFX
-            WlJON2VEY2xrK3JJdVJLendWTzkyeDAKmthxV69tcML2vwsIu0LTOgrvHbA0ukUh
-            6xx5SVAxOOJA4foJ5DleAwKMcqbsujJkaZCuGJwVZYR7GiiBzus6/A==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBTZzJyZjVmeVVGam0rVVA2
+            V3B2ZU80MXVWZzVPdDBUd2U0NmRCRmJCSm4wClFnZG9pRUFmYVpNbHRJS284aVY1
+            eUdnUFFDK0E5VE53NWd6MzlXby9UWTQKLS0tIHdnMmw5MG5td0lyUEJQRnptbExw
+            Q0tsU1hMRjZSc3ZpZjZGNVVKeXhydVEKwVVJSlgdxbQyxuJY0tvQJ5cvp44SGNk9
+            FHEtmLypD79LN4ec7EbkZ9gbjVoFPxtnyYL8HmnA/HA8LPZKFrNRdw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-06T15:48:16Z"
-    mac: ENC[AES256_GCM,data:dNNoZLcxUy6tI3gqEREUjlkz5wsTKnmvGWx5VsJXltw7PMyemRce3SXBxapMJ4rVi1xdSqZU0PzT1GFeYa+1QKjGvRm+BsNHS/vv3qd4/YVMyAVcSkndOuTKuDaaYSFptXNTKWk2D1Q3LKTP6fSX0c1EqV+lkdNQwstJmvyOBIo=,iv:f26m/JIXOe7wMJop4iAveZoDG5v4IC8NXRIDUtZ4ZKU=,tag:SV67T/YC6RG14ayYDROKTQ==,type:str]
+    lastmodified: "2023-11-30T17:10:06Z"
+    mac: ENC[AES256_GCM,data:rEixDODqZSCOIhH+RwXksaUle9hAc2igggGn6hvobQTeuVDxA21hbzg0Youhq6t9Sbz/dJYraHUVBk4dNjBImTepty2fZN1Y5CWcXcF6+h7obq1rmcyfM3Sxw/zlF5a065n85LPvM7smYTkfpdP/+ikyU+ZgO/empVouCQzgmxA=,iv:cDMc8GseNdblQ2B8aro0iHpNyPHG/SJk54DYN2N4I3w=,tag:cc91d3DPzVcNHWaP24g1qQ==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
-    version: 3.7.3
+    version: 3.8.1
